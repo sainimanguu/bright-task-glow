@@ -2,39 +2,72 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
+/* Task Manager Design System - Modern, elegant, productivity-focused */
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    /* Core Background */
+    --background: 240 10% 98%;
+    --foreground: 240 10% 8%;
 
+    /* Surface Colors */
     --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
-
+    --card-foreground: 240 10% 8%;
+    
     --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover-foreground: 240 10% 8%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    /* Brand Colors - Modern Blue/Purple */
+    --primary: 245 58% 55%;
+    --primary-foreground: 0 0% 100%;
+    --primary-light: 245 70% 70%;
+    
+    /* Status Colors */
+    --todo: 213 94% 68%;
+    --todo-foreground: 0 0% 100%;
+    
+    --in-progress: 266 85% 70%;
+    --in-progress-foreground: 0 0% 100%;
+    
+    --completed: 142 76% 36%;
+    --completed-foreground: 0 0% 100%;
+    
+    --high-priority: 0 84% 60%;
+    --high-priority-foreground: 0 0% 100%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    /* UI Elements */
+    --secondary: 240 5% 96%;
+    --secondary-foreground: 240 10% 8%;
+    
+    --muted: 240 5% 96%;
+    --muted-foreground: 240 4% 46%;
+    
+    --accent: 245 58% 55%;
+    --accent-foreground: 0 0% 100%;
+    
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+    
+    --border: 240 6% 90%;
+    --input: 240 6% 90%;
+    --ring: 245 58% 55%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    /* Design Elements */
+    --radius: 0.75rem;
+    
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(245 58% 55%), hsl(266 85% 70%));
+    --gradient-card: linear-gradient(145deg, hsl(0 0% 100%), hsl(240 5% 98%));
+    --gradient-background: linear-gradient(180deg, hsl(240 10% 98%), hsl(240 8% 95%));
+    
+    /* Shadows */
+    --shadow-card: 0 1px 3px 0 hsl(240 5% 15% / 0.1), 0 1px 2px 0 hsl(240 5% 15% / 0.06);
+    --shadow-card-hover: 0 4px 6px -1px hsl(240 5% 15% / 0.1), 0 2px 4px -1px hsl(240 5% 15% / 0.06);
+    --shadow-primary: 0 10px 15px -3px hsl(245 58% 55% / 0.3);
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
-
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    /* Animations */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-quick: all 0.15s ease-out;
 
     --radius: 0.5rem;
 
@@ -101,5 +134,83 @@ All colors MUST be HSL.
 
   body {
     @apply bg-background text-foreground;
+    background: var(--gradient-background);
+  }
+}
+
+@layer components {
+  /* Task Status Badges */
+  .status-badge {
+    @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium;
+  }
+  
+  .status-todo {
+    @apply bg-todo text-todo-foreground;
+  }
+  
+  .status-in-progress {
+    @apply bg-in-progress text-in-progress-foreground;
+  }
+  
+  .status-completed {
+    @apply bg-completed text-completed-foreground;
+  }
+  
+  .status-high-priority {
+    @apply bg-high-priority text-high-priority-foreground;
+  }
+
+  /* Task Cards */
+  .task-card {
+    @apply rounded-xl border bg-card/50 backdrop-blur-sm p-6 transition-all duration-300;
+    background: var(--gradient-card);
+    box-shadow: var(--shadow-card);
+  }
+  
+  .task-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-card-hover);
+  }
+
+  /* Buttons */
+  .btn-primary {
+    @apply bg-gradient-to-r from-primary to-primary-light text-primary-foreground;
+    box-shadow: var(--shadow-primary);
+  }
+  
+  .btn-primary:hover {
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-primary), 0 2px 4px 0 hsl(245 58% 55% / 0.2);
+  }
+
+  /* Animations */
+  .animate-fade-in-up {
+    animation: fade-in-up 0.6s ease-out;
+  }
+  
+  .animate-scale-in {
+    animation: scale-in 0.3s ease-out;
+  }
+}
+
+@keyframes fade-in-up {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scale-in {
+  0% {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
   }
 }

@@ -26,7 +26,8 @@ export default {
 				foreground: 'hsl(var(--foreground))',
 				primary: {
 					DEFAULT: 'hsl(var(--primary))',
-					foreground: 'hsl(var(--primary-foreground))'
+					foreground: 'hsl(var(--primary-foreground))',
+					light: 'hsl(var(--primary-light))'
 				},
 				secondary: {
 					DEFAULT: 'hsl(var(--secondary))',
@@ -51,6 +52,23 @@ export default {
 				card: {
 					DEFAULT: 'hsl(var(--card))',
 					foreground: 'hsl(var(--card-foreground))'
+				},
+				// Task Status Colors
+				todo: {
+					DEFAULT: 'hsl(var(--todo))',
+					foreground: 'hsl(var(--todo-foreground))'
+				},
+				'in-progress': {
+					DEFAULT: 'hsl(var(--in-progress))',
+					foreground: 'hsl(var(--in-progress-foreground))'
+				},
+				completed: {
+					DEFAULT: 'hsl(var(--completed))',
+					foreground: 'hsl(var(--completed-foreground))'
+				},
+				'high-priority': {
+					DEFAULT: 'hsl(var(--high-priority))',
+					foreground: 'hsl(var(--high-priority-foreground))'
 				},
 				sidebar: {
 					DEFAULT: 'hsl(var(--sidebar-background))',
